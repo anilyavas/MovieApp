@@ -1,4 +1,4 @@
-export const fetchWatchListMovies = async () => {
+export const fetchWatchlistMovies = async () => {
   const url =
     'https://api.themoviedb.org/3/account/21095892/watchlist/movies?language=en-US&page=1&sort_by=created_at.desc';
   const options = {
