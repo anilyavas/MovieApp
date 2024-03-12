@@ -1,10 +1,10 @@
 import { fetchMovie } from '@/api/movies';
 import { addMovieToWatchlist } from '@/api/watchlist';
-import { Text } from '@/components/Themed';
 import { FontAwesome } from '@expo/vector-icons';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Stack, useLocalSearchParams } from 'expo-router';
-import { ActivityIndicator, Image, Pressable, View } from 'react-native';
+import { ActivityIndicator, Image, Pressable } from 'react-native';
+import { View, Text } from '@/components/Themed';
 
 const MovieDetails = () => {
   const { id } = useLocalSearchParams();
@@ -40,7 +40,7 @@ const MovieDetails = () => {
       <Stack.Screen options={{ title: movie.title }} />
       <Image
         source={{
-          uri: 'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path,
+          uri: 'https://image.tmdb.org/t/p/w500' + movie.backdrop_path,
         }}
         style={{ width: '100%', height: 300 }}
       />
@@ -50,10 +50,10 @@ const MovieDetails = () => {
         </Text>
         <View style={{ marginVertical: 10 }}>
           <Pressable
-            onPress={() => mutate}
+            onPress={() => mutate()}
             style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}
           >
-            <FontAwesome name='bookmark-o' size={24} color={'white'} />
+            <FontAwesome name='bookmark-o' size={24} color='white' />
             <Text>Add to watchlist</Text>
           </Pressable>
         </View>
