@@ -25,18 +25,19 @@ export default function TabLayout() {
         // Disable the static render of the header on web
         // to prevent a hydration error in React Navigation v6.
         headerShown: useClientOnlyValue(false, true),
-      }}>
+      }}
+    >
       <Tabs.Screen
-        name="index"
+        name='index'
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'Movies',
+          tabBarIcon: ({ color }) => <TabBarIcon name='home' color={color} />,
           headerRight: () => (
-            <Link href="/modal" asChild>
+            <Link href='/modal' asChild>
               <Pressable>
                 {({ pressed }) => (
                   <FontAwesome
-                    name="info-circle"
+                    name='info-circle'
                     size={25}
                     color={Colors[colorScheme ?? 'light'].text}
                     style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
@@ -48,10 +49,10 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="two"
+        name='two'
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'Watchlist',
+          tabBarIcon: ({ color }) => <TabBarIcon name='eye' color={color} />,
         }}
       />
     </Tabs>
