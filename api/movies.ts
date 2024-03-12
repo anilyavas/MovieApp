@@ -4,8 +4,8 @@ const headers = {
     'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiMmE4NGY1ZjIxYmYxMmMzYTAxNGE2NGQyNjc0NmUzMCIsInN1YiI6IjY1ZjA0MzYxMGUyOWEyMDE3YjM4NmRlNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.WKZX7KUUKTtyf7_hK_cyK6xtQEuZoQp_rziDszX0Tj4',
 };
 
-export const fetchTopRatedMovies = async (page: number) => {
-  const url = `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${page}`;
+export const fetchTopRatedMovies = async ({ pageParam }) => {
+  const url = `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${pageParam}`;
   const options = {
     method: 'GET',
     headers,

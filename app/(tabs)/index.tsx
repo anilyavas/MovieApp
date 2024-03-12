@@ -7,7 +7,7 @@ import MovieListItem from '@/components/MovieListItem';
 export default function TabOneScreen() {
   const { data, isLoading, error, fetchNextPage } = useInfiniteQuery({
     queryKey: ['movies'],
-    queryFn: ({ pageParam }) => fetchTopRatedMovies(pageParam),
+    queryFn: fetchTopRatedMovies,
     initialPageParam: 1,
     getNextPageParam: (lastPage, pages) => pages.length + 1,
   });
