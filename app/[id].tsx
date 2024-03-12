@@ -1,13 +1,15 @@
 import { fetchMovie } from '@/api/movies';
 import { addMovieToWatchlist } from '@/api/watchlist';
-import { View, Text } from '@/components/Themed';
+import { Text } from '@/components/Themed';
 import { FontAwesome } from '@expo/vector-icons';
-import { useQuery, useMutation } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Stack, useLocalSearchParams } from 'expo-router';
-import { ActivityIndicator, Image, Pressable } from 'react-native';
+import { ActivityIndicator, Image, Pressable, View } from 'react-native';
 
 const MovieDetails = () => {
   const { id } = useLocalSearchParams();
+
+  const client = useQueryClient();
 
   const {
     data: movie,
@@ -20,6 +22,9 @@ const MovieDetails = () => {
 
   const { mutate } = useMutation({
     mutationFn: () => addMovieToWatchlist(id),
+    onSuccess: () => {
+      client.invalidateQueries(['watchlist']);
+    },
   });
 
   if (isLoading) {
